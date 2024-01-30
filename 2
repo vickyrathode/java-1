@@ -1,0 +1,88 @@
+import java.util.Scanner;
+
+class employee{
+public String name,des,dept;
+public int id,age;
+public double sal;
+
+    public void getdata(){
+        Scanner input =new Scanner(System.in);
+       System.out.println("Enter Employee Name : ");
+       name = input.nextLine();
+       System.out.println("Enter age of Employee : ");
+       age = input.nextInt();
+       input.nextLine();
+       System.out.println("Enter Id of the Employee :");
+       id=input.nextInt();
+       input.nextLine();
+       System.out.print("Enter Department of Employee : ");
+       dept=input.nextLine();
+       System.out.print("Enter Designation of Employee :");
+       des=input.nextLine();
+     
+       System.out.println("Enter Salary of Employee :");
+       sal=input.nextDouble();
+       System.out.println();
+       input.close();
+
+    }
+   
+    public void printdata(){
+        System.out.println("Employee name :" +name);
+        System.out.println("employee Age :"+age);
+        System.out.println("Employee  ID : "+id);
+        System.out.println("Employee Department : "+dept);
+        System.out.println("Employee designation :"+des);
+        System.out.println("employee Salary :"+sal+"\n");
+    }
+}
+public class AEmple2 {
+    public static void main(String[] args)
+    {
+        Scanner intput = new Scanner(System.in);
+        System.out.println("Enter employee size : ");
+        int num = intput.nextInt();
+        
+        employee[] employees = new employee[num];
+        for(int i=0;i<num;i++)
+        {
+            System.out.println("Enter Employee "+(i+1)+" Details :");
+            employees[i] =new employee();
+            employees[i].getdata();
+        }
+        for(int i=0;i<num;i++)
+        {
+            System.out.println("Details " +(i+1)+ " Employee");
+            employees[i].printdata();
+        }
+
+        double salestotal=0;
+        for(int i=0;i<num;i++)
+        {
+            if(employees[i].dept.compareTo("sales")==0)
+            {
+                salestotal += employees[i].sal;
+            }
+        }
+        System.out.println("total sales department salary is : $"+salestotal);
+        double max =0;
+      int index=0;
+        
+        for(int i=0;i<num;i++)
+        {
+            if(employees[i].dept.compareTo("sales")==0 & employees[i].des.compareTo("manager")==0)
+            {
+                if(employees[i].sal >max)
+                {
+                    max = employees[i].sal;
+                    index = i;
+                }
+            }
+        }
+        System.out.println("The highest paid manager in sale department is :");
+        employees[index].printdata();
+        intput.close();
+    }
+    
+   
+}
