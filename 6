@@ -1,0 +1,86 @@
+import java.util.*;
+class Bank{
+   protected String name ;
+   protected int accno;
+   protected double bal;
+
+    void getdata()
+    {
+        Scanner input = new Scanner(System.in);
+        System.out.print("\nenter name :");
+       name = input.nextLine();
+        System.out.print("enter ACC no. :");
+      accno = input.nextInt();
+        System.out.print("enter balence : ");
+         bal =input.nextDouble();
+         input.close();
+    }
+    void showdata()
+    {
+        System.out.print("\nName : "+name);
+        System.out.print("\nAcc no : "+accno);
+        System.out.print("\nBalence :" +bal);
+    }
+
+    void calinterrestrate()
+    {
+        System.out.print("\nnot implemented yet ");
+    }
+}
+class CityBank extends Bank{
+    double interest = 0.5;
+    void calinterestrate()
+    {
+        double interestrate = bal * interest;
+        System.out.print("\nCity Bank interest is : "+interestrate);
+    }
+
+}
+class SBIBank extends Bank{
+
+    double interest = 0.4;
+    void calinterestrate()
+    {
+        double interestrate = bal * interest;
+        System.out.print("\nSBI Bank interest is : "+interestrate);
+    }
+}
+
+class CanaraBank extends Bank{
+
+    double interest = 0.3;
+    void calinterestrate()
+    {
+        double interestrate = bal * interest;
+        System.out.print("\n CAnara Bank interest is : "+interestrate);
+    }
+}
+
+public class EBank6 {
+
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        CityBank citybank =new CityBank();
+        SBIBank sbibank =new SBIBank();
+        CanaraBank canarabank =new CanaraBank();
+
+        System.out.print("\nenter the details of City Bank:");
+        citybank.getdata();
+        citybank.showdata();
+        citybank.calinterestrate();
+
+        System.out.print("\n\nenter the details of SBI Bank:");
+        sbibank.getdata();
+        sbibank.showdata();
+        sbibank.calinterestrate();
+
+        System.out.print("\n\nenter the details of Canara Bank:");
+        canarabank.getdata();
+        canarabank.showdata();
+        canarabank.calinterestrate();
+
+input.close();
+
+    }
+    
+}
