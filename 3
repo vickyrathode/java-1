@@ -1,0 +1,70 @@
+import java.util.*;
+
+class Complex {
+    int real, image;
+
+    public Complex(int real, int image) {
+        this.real = real;
+        this.image = image;
+    }
+
+    public static Complex add(Complex n1, Complex n2) {
+        return new Complex(n1.real + n2.real, n1.image + n2.image);
+    }
+
+    public static Complex sub(Complex n1, Complex n2) {
+        return new Complex(n1.real - n2.real, n1.image - n2.image);
+    }
+
+    public static boolean compare(Complex n1, Complex n2) {
+        return n1.real == n2.real && n1.image == n2.image;
+    }
+}
+
+public class Complexnumber3 {
+    public static void main(String[] args) {
+        int nr1, ni1, nr2, ni2;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the real and imaginary values of the first complex number:");
+        nr1 = input.nextInt();
+        ni1 = input.nextInt();
+
+        System.out.println("Enter the real and imaginary values of the second complex number:");
+        nr2 = input.nextInt();
+        ni2 = input.nextInt();
+
+        Complex c1 = new Complex(nr1, ni1);
+        Complex c2 = new Complex(nr2, ni2);
+
+        boolean n=true;
+        while (n) {
+       
+        System.out.print("\n1. Add\t 2. Subtract\t 3. Compare: \n");
+        System.out.print("Enter your choice: ");
+        int ch = input.nextInt();
+
+        switch (ch) {
+            case 1:
+                Complex addition = Complex.add(c1, c2);
+                System.out.println("The sum is " + addition.real + " + " + addition.image + "i\n");
+                break;
+
+            case 2:
+                Complex subtraction = Complex.sub(c1, c2);
+                System.out.println("The difference is " + subtraction.real + " + " + subtraction.image + "i\n");
+                break;
+
+            case 3:
+                boolean compareResult = Complex.compare(c1, c2);
+                System.out.println("Comparison result: " + (compareResult ? "Equal" : "Not equal"));
+                break;
+                default:
+                {
+                    System.out.println("enter corrext value ");
+                    n=false;
+                }
+        }   
+       }
+    
+    }
+}
